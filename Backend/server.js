@@ -7,6 +7,7 @@ const registerationRouter = require("./routes/registerationRouter")
 const app = express();
 app.use(express.json());
 app.use(mainRouter);
+app.use(registerationRouter)
 
 
 const port = 3000 || process.env.PORT;
