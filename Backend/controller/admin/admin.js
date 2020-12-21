@@ -25,12 +25,54 @@ const deleteCategory = (req, res) => {
 // adding product
 const addProduct = (req, res) => {
     const { name, price, img_url } = req.body;
-    const available = 1
-    const query = `insert into product (name,price,img_url,available) values(?,?,?,?)`
-    const data = [name, price, img_url, available]
+    const query = `insert into products (name,price,img_url) values(?,?,?)`
+    const data = [name, price, img_url]
     connection.query(query, data, (err, result) => {
         if (err) throw err;
     })
     res.json("Added product")
 }
-module.exports = { addCategory, deleteCategory, addProduct }
+
+//delete product
+const deleteProduct = (req, res) => {
+    const { name } = req.body;
+    const query = `delete from products where name=?`
+    const data = [name]
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json("Added product");
+    })
+}
+
+// disable product
+const disableProduct = (req, res) => {
+    const { name } = req.body;
+    const query = `UPDATE products SET available = '0' where name= ?`;
+    const data = [name]
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json("disabled product")
+    })
+}
+
+//enable product
+const enableProduct = (req, res) => {
+    const { name } = req.body;
+    const query = `UPDATE products SET available = '1' where name= ?`;
+    const data = [name]
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json("enabled product")
+    })
+}
+
+
+
+
+
+
+
+
+
+
+module.exports = { addCategory, deleteCategory, addProduct, deleteProduct, disableProduct, enableProduct }
