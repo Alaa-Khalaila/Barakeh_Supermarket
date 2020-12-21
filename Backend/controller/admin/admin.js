@@ -66,6 +66,27 @@ const enableProduct = (req, res) => {
     })
 }
 
+//disable user
+const disableUser = (req, res) => {
+    const { user_name } = req.body;
+    const query = `UPDATE users SET is_disable ='1' WHERE user_name =?`;
+    const data = [user_name];
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json("User disabled")
+    });
+}
+
+//enable user
+const enableUser = (req, res) => {
+    const { user_name } = req.body;
+    const query = `UPDATE users SET is_disable ='0' WHERE user_name =?`
+    const data = [user_name];
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json("Enabled user")
+    })
+}
 
 
 
@@ -75,4 +96,9 @@ const enableProduct = (req, res) => {
 
 
 
-module.exports = { addCategory, deleteCategory, addProduct, deleteProduct, disableProduct, enableProduct }
+
+
+module.exports = {
+     addCategory, deleteCategory, addProduct, deleteProduct, disableProduct, enableProduct,
+     disableUser, enableUser 
+    }
