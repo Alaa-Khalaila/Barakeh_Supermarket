@@ -17,6 +17,8 @@ const login = (req, res) => {
                     phone: result[0].phone,
                     password: result[0].password,
                     email: result[0].email,
+                    is_disable: result[0].is_disable,
+                    role_id: result[0].role_id
                 };
                 token = jwt.sign(payload, process.env.SECRET);
                 res.header('x-auth', token).json(token)

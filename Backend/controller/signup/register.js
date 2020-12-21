@@ -5,13 +5,11 @@ const bcrypt = require("bcrypt");
 const register = (req, res) => {
 
     const { user_name, password, phone, email } = req.body;
-    const role_id = 0;
     var dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
     const day = dateObj.getUTCDate();
     const year = dateObj.getUTCFullYear();
     const created_at = year + "/" + month + "/" + day;
-    const is_disabled = 0
 
     // Cheacking if there is no email or user name in the database.
     let query = `SELECT * from users WHERE email = '${email}' OR user_name ='${user_name}' `;
@@ -31,7 +29,7 @@ const register = (req, res) => {
         });
 
         // Adding new user to database.
-        query = `insert INTO users (email,phone,password,user_name,role_id,created_at,is_disabled) VALUES('${email}','${phone}','${hashPassword}','${user_name}','${role_id}','${created_at}','${is_disabled}')`
+        query = `insert INTO users (email,phone,password,user_name,created_at) VALUES('${email}','${phone}','${hashPassword}','${user_name}','${created_at}')`
         connection.query(query, (err, result) => {
             if (err) throw err
         })
