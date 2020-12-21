@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const register = (req, res) => {
 
     const { user_name, password, phone, email } = req.body;
-    var dateObj = new Date();
+    let dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
     const day = dateObj.getUTCDate();
     const year = dateObj.getUTCFullYear();
