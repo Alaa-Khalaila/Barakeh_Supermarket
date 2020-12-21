@@ -88,6 +88,18 @@ const enableUser = (req, res) => {
     })
 }
 
+//wathcing orders list
+const ordersList = (req, res) => {
+    const query = `SELECT orders.order_id, users.user_name, orders.created_at,orders.comment,orders.price,orders.status
+    FROM orders
+    INNER JOIN users
+    ON orders.users_id=users.user_id`
+    connection.query(query, (err, result) => {
+        if (err) { throw err };
+        res.json(result)
+    })
+}
+
 
 
 
@@ -99,6 +111,6 @@ const enableUser = (req, res) => {
 
 
 module.exports = {
-     addCategory, deleteCategory, addProduct, deleteProduct, disableProduct, enableProduct,
-     disableUser, enableUser 
-    }
+    addCategory, deleteCategory, addProduct, deleteProduct, disableProduct, enableProduct,
+    disableUser, enableUser, ordersList
+}
