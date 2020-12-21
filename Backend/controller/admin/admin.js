@@ -88,7 +88,7 @@ const enableUser = (req, res) => {
     })
 }
 
-//wathcing orders list
+//getting orders list
 const ordersList = (req, res) => {
     const query = `SELECT orders.order_id, users.user_name, orders.created_at,orders.comment,orders.price,orders.status
     FROM orders
@@ -100,17 +100,18 @@ const ordersList = (req, res) => {
     })
 }
 
-
-
-
-
-
-
-
-
-
+//changing the order status
+const updateStatus = (req, res) => {
+    const { order_id } = req.body;
+    const query = `UPDATE orders SET status ='1' WHERE order_id=?`
+    const data = [order_id];
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json("status updated")
+    })
+}
 
 module.exports = {
     addCategory, deleteCategory, addProduct, deleteProduct, disableProduct, enableProduct,
-    disableUser, enableUser, ordersList
+    disableUser, enableUser, ordersList, updateStatus
 }
