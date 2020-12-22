@@ -78,7 +78,7 @@ const disableUser = (req, res) => {
 }
 
 //enable user
-const enableUser = (req, res) => {
+const enableUser = (req, res)  => {
     const { user_name } = req.body;
     const query = `UPDATE users SET is_disable ='0' WHERE user_name =?`
     const data = [user_name];
