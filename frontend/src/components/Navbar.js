@@ -7,7 +7,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-md navbar-light bg-white">
                 <img href="#" src={logo} className="navbar-brand" alt="logo" style={{ width: "140px" }}></img>
                 <div className="search col-md-3">
-                    <input></input><i class="fas fa-search"></i>
+                    <input type="search" placeholder="..ابحث عن منتج"></input><i class="fas fa-search"></i>
                 </div>
                 <div className="col-md-4 cash">
                     <button>الحساب : 0دينار</button>

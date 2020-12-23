@@ -7,12 +7,14 @@
     box-sizing: content-box;
 }
 
+
+/* ------------------------------ Navbar -------------------------------*/
 .search{
     display: flex;
     align-items: center;
     background-color: #F7F7F7;
     border-radius: 6px;
-    height: 35px;
+    height: 40px;
 }
 .search input{
     background-color: #F7F7F7;
@@ -21,6 +23,10 @@
     border-radius: 6px;
     width: 97%;
 }
+
+input[type="search"]::placeholder {  
+    text-align: right; 
+} 
 
 .navbar-toggler{
     top: 15px;
@@ -45,4 +51,46 @@
     border-radius: 5px;
     outline: none;
     margin-top: 5px;
+}
+
+/*-------------------------- Register ----------------------*/
+
+.cont{
+    background-color: #F7F7F7;
+    padding-top: 40px;
+    height: 100vh;
+}
+.note{
+    text-align: center;
+    height: 80px;
+    background-color: #FFCD58;
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+
+.form-content{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+
+.form-control{
+    border-radius:1.5rem;
+}
+
+.btnSubmit{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #FFCD58;
+    color: #fff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
