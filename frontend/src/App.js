@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar';
 import Register from './components/Register';
 import Login from './components/Login';
 import Contact from './components/Contact';
+import Cart from './components/Cart';
 
 export default class App extends Component {
     render() {
@@ -23,6 +24,9 @@ export default class App extends Component {
                     </Route>
                     <Route exact path ="/contactus" >
                         <Contact/>
+                    </Route>
+                    <Route exact path ="/cart" >
+                        <Cart/>
                     </Route>
                 </Router>
 
