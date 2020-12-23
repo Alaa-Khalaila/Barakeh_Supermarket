@@ -64,5 +64,5 @@ const sendMsg = (req, res) => {
     })
 }
 
-module.exports = { addItem, deleteItem, orderRequest, customerOrders,sendMsg }
+module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg }
 
