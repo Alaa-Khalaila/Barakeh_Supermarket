@@ -11,6 +11,11 @@ const register = (req, res) => {
     const year = dateObj.getUTCFullYear();
     const created_at = year + "/" + month + "/" + day;
 
+    // Checking if the user didn't filled all the inputs.
+    if (user_name === '' || password === '' || phone === '' || email === '') {
+        return res.json("Please fill out all fields")
+    }
+
     // Cheacking if there is no email or user name in the database.
     let query = `SELECT * from users WHERE email = '${email}' OR user_name ='${user_name}' `;
     connection.query(query, (err, result) => {
