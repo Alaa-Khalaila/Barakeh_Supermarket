@@ -24,7 +24,8 @@
     width: 97%;
 }
 
-input[type="search"]::placeholder {  
+input[type="search"]::placeholder,input[type="email"]::placeholder,input[type="password"]::placeholder,
+input[type="text"]::placeholder,input[type="number"]::placeholder {  
     text-align: right; 
 } 
 
@@ -58,7 +59,6 @@ input[type="search"]::placeholder {
 .cont{
     background-color: #F7F7F7;
     padding-top: 40px;
-    height: 100vh;
 }
 .note{
     text-align: center;
