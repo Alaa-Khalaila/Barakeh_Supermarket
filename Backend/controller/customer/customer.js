@@ -52,6 +52,17 @@ const customerOrders = (req, res) => {
     })
 }
 
+// Send message
+const sendMsg = (req, res) => {
+    const { name, phone, message } = req.body;
+    //make this depend on jwt user id
+    const query = `insert into messages (name, phone,message) values(?,?,?)`
+    const data = [name, phone, message];
+    connection.query(query, data, (err, result) => {
+        if (err) throw err;
+        res.json("sent message")
+    })
+}
 
-module.exports = { addItem, deleteItem, orderRequest, customerOrders }
+module.exports = { addItem, deleteItem, orderRequest, customerOrders,sendMsg }
 
