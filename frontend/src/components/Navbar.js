@@ -1,11 +1,15 @@
 import React from 'react'
 import logo from "./pics/logo.png"
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div className="container-fluid">
-            <nav className="navbar navbar-expand-md navbar-light bg-white">
-                <img href="#" src={logo} className="navbar-brand" alt="logo" style={{ width: "140px" }}></img>
+            
+            <nav className="navbar navbar-expand-md navbar-light bg-white container-fluid">
+                <Link to="/">
+                    <img src={logo} className="navbar-brand" alt="logo" style={{ width: "140px" }}></img>
+                </Link>
                 <div className="search col-md-3">
                     <input type="search" placeholder="..ابحث عن منتج"></input><i class="fas fa-search"></i>
                 </div>
@@ -19,14 +23,20 @@ const Navbar = () => {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item"><a href="#" className="nav-link"> 0788226566 <i class="fas fa-phone"></i></a></li>
                         <li className="nav-item"><a href="#" className="nav-link"> عربتي<i class="fas fa-shopping-cart"></i></a></li>
-                        <li className="nav-item"><a href="#" className="nav-link">اتصل بنا <i class="fas fa-file-signature"></i></a></li>
+                        <Link to="/contactus"><li className="nav-item"><div className="nav-link">اتصل بنا <i class="fas fa-file-signature"></i></div></li></Link>
+                        
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                                 حسابي
                             </a>
-                            <div class="dropdown-menu-right dropdown-menu" >
-                                <a class="dropdown-item" href="#">تسجيل دخول</a>
-                                <a class="dropdown-item" href="#">انشاء حساب</a>
+                            <div class="dropdown-menu-right dropdown-menu acc" >
+                                <Link to="/login">
+                                    <div class="dropdown-item" >تسجيل دخول</div>
+                                </Link>
+                                <Link to="/signup">
+                                    <div class="dropdown-item">انشاء حساب</div>
+                                </Link>
+                                
                             </div>
                         </li>
                     </ul>

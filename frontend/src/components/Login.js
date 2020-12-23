@@ -11,7 +11,7 @@ const Login = () => {
 
                     <div class="form-content">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="row-md-6">
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="البريد الالكتروني *" />
                                 </div>
