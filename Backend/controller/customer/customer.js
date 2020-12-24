@@ -73,5 +73,15 @@ const allCat = (req, res) => {
     })
 }
 
-module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat }
+// single category list items
+const singleProduct = (req, res) => {
+    const query = `select * from products where category_id=?`
+    const data = [req.params.id]
+    connection.query(query, data, (err, result) => {
+        if (err) { throw err };
+        res.json(result)
+    })
+}
+
+module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat, singleProduct }
 

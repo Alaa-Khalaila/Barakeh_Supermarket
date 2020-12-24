@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
 import Categories from './components/Categories';
+import Cola from './components/Product';
 
 
 export default class App extends Component {
@@ -16,23 +17,24 @@ export default class App extends Component {
         return (
             <div>
                 <Router>
-                    <Route path="/">
-                        <Navbar/>
+                    <Navbar />
+                    <Route exact path="/signup">
+                        <Register />
                     </Route>
-                    <Route exact path ="/signup">
-                        <Register/>
+                    <Route exact path="/login" >
+                        <Login />
                     </Route>
-                    <Route exact path ="/login" >
-                        <Login/>
+                    <Route exact path="/contactus" >
+                        <Contact />
                     </Route>
-                    <Route exact path ="/contactus" >
-                        <Contact/>
+                    <Route exact path="/cart" >
+                        <Cart />
                     </Route>
-                    <Route exact path ="/cart" >
-                        <Cart/>
+                    <Route exact path="/" >
+                        <Categories />
                     </Route>
-                    <Route  path ="/" >
-                        <Categories/>
+                    <Route path="/products/" >
+                        <Cola />
                     </Route>
                 </Router>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
@@ -15,12 +16,14 @@ const Categories = () => {
             })
     }
     return (
-        <div>
+        <div className="bg-light" style={{height:"100vh"}}>
             <div className="prod">
                 <div className="border" />
                 <div className="imgs">
                     {categories.map((e, i) => (
-                    <img src={`${e.img_url}`} alt="" />
+                        <Link to={`/products/${e.category_id}`}>
+                            <img src={`${e.img_url}`} alt="" />
+                        </Link>
                 ))}
                 </div>
                 
