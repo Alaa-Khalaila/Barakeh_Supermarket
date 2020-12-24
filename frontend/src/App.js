@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
+import Categories from './components/Categories';
 
 
 export default class App extends Component {
@@ -29,6 +30,9 @@ export default class App extends Component {
                     </Route>
                     <Route exact path ="/cart" >
                         <Cart/>
+                    </Route>
+                    <Route  path ="/" >
+                        <Categories/>
                     </Route>
                 </Router>
 

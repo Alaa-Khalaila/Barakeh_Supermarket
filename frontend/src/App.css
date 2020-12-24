@@ -182,3 +182,24 @@ input::-webkit-inner-spin-button {
     margin-top: 5%;
     background-color: #fff;
 }
+
+/*-------------categories------------------*/
+
+
+.border{
+    border-top: silver 1px solid;
+    margin-bottom: 40px;
+    }
+.prod{
+    width: 100%;
+    background-color: #F7F7F7;
+}
+.imgs{
+    margin-left: 60px;
+}
+.imgs img {
+    height: 210px;
+    width: 210px;
+    margin: 10px 10px 10px 10px;
+    cursor: pointer;
+}

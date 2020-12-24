@@ -64,5 +64,14 @@ const sendMsg = (req, res) => {
     })
 }
 
-module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg }
+// Categories list
+const allCat = (req, res) => {
+    const query = `select * from category`
+    connection.query(query, (err, result) => {
+        if (err) { throw err };
+        res.json(result)
+    })
+}
+
+module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat }
 
