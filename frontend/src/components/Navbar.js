@@ -21,7 +21,7 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse  nav-list col-md-4" id="navbarMenu">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item"><a href="#" className="nav-link"> 0788226566 <i class="fas fa-phone"></i></a></li>
+                        <li className="nav-item"><div  className="nav-link"> 0788226566 <i class="fas fa-phone"></i></div></li>
                         <Link to="/cart"><li className="nav-item"><div className="nav-link"> عربتي<i class="fas fa-shopping-cart"></i></div></li></Link>
                         
                         <Link to="/contactus"><li className="nav-item"><div className="nav-link">اتصل بنا <i class="fas fa-file-signature"></i></div></li></Link>

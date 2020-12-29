@@ -2,10 +2,10 @@ const connection = require('../../db')
 
 //add item
 const addItem = (req, res) => {
-    const { quantity, product_id, order_id, each_price } = req.body;
+    const { product_id,price } = req.body;
     //make this depend on jwt user id
-    const query = `insert into order_products (quantity, product_id, order_id,each_price) values(?,?,?,?)`
-    const data = [quantity, product_id, order_id, each_price];
+    const query = `insert into order_products (product_id,order_id,price) values(?,?,?)`
+    const data = [product_id, 1,price];
     connection.query(query, data, (err, result) => {
         if (err) throw err;
         res.json("added item")
@@ -83,5 +83,15 @@ const singleProduct = (req, res) => {
     })
 }
 
-module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat, singleProduct }
+const cart = (req, res) => {
+    const query = `SELECT order_products.order_id,order_products.product_id,order_products.price,users.user_id,products.name
+    FROM order_products
+    INNER JOIN users ON order_products.order_id=users.user_id
+    INNER JOIN products ON products.product_id=order_products.product_id`
+    connection.query(query, (err, result) => {
+        if (err) { throw err };
+        res.json(result)
+    })
+}
+module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat, singleProduct,cart }
 
