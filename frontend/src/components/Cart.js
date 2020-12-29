@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Cart = () => {
     const [products, setProducts] = useState([])
+    const [product_id, setProduct] = useState('')
 
     useEffect(() => {
         getProd();
@@ -14,6 +15,16 @@ const Cart = () => {
                 setProducts(result.data);
                 return
             })
+    }
+
+    const clickHandler = (e)=>{
+        setProduct(e.product_id);
+        delProduct(product_id)
+    }
+
+    const delProduct = (product_id) => {
+        axios.post(`http://localhost:3000/customer/deleteitem`, { product_id }
+        )
     }
 
     return (
@@ -34,7 +45,7 @@ const Cart = () => {
                             <th scope="row">{i}</th>
                             <td>{e.name}</td>
                             <td>{e.price}</td>
-                            <td><button className="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+                            <td><button className="btn btn-danger" onClick={()=>clickHandler(e)}><i class="far fa-trash-alt"></i></button></td>
                         </tr>
                     ))}
 

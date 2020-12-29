@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from "./pics/logo.png"
 import { Link } from 'react-router-dom';
+import  axios  from 'axios';
 
 const Navbar = () => {
+    const [price, setPrice] = useState('')
+
+    useEffect(() => {
+        getPrice();
+    });
+    const getPrice = () => {
+        axios.get(`http://localhost:3000/customer/getprice`)
+            .then((response) => {
+                setPrice(response.data);
+                console.log(price)
+            })
+    }
     return (
         <div className="container-fluid">
             
@@ -14,7 +27,7 @@ const Navbar = () => {
                     <input type="search" placeholder="..ابحث عن منتج"></input><i class="fas fa-search"></i>
                 </div>
                 <div className="col-md-4 cash">
-                    <button>الحساب : 0دينار</button>
+                    <button>الحساب : {price}دينار</button>
                 </div>
                 <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span className="navbar-toggler-icon"></span>

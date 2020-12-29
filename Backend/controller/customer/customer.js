@@ -2,10 +2,10 @@ const connection = require('../../db')
 
 //add item
 const addItem = (req, res) => {
-    const { product_id,price } = req.body;
+    const { product_id, price } = req.body;
     //make this depend on jwt user id
     const query = `insert into order_products (product_id,order_id,price) values(?,?,?)`
-    const data = [product_id, 1,price];
+    const data = [product_id, 1, price];
     connection.query(query, data, (err, result) => {
         if (err) throw err;
         res.json("added item")
@@ -14,10 +14,11 @@ const addItem = (req, res) => {
 
 //delete item
 const deleteItem = (req, res) => {
-    const { product_id, order_id } = req.body;
+    const { product_id } = req.body;
     //make this depend on jwt user id
-    const query = `delete from order_products where product_id = ${product_id} AND order_id = ${order_id}`
-    connection.query(query, (err, result) => {
+    const query = `delete from order_products where product_id = ?`
+    const data = [product_id]
+    connection.query(query, data, (err, result) => {
         if (err) throw err;
         res.json("deleted item")
     })
@@ -93,5 +94,13 @@ const cart = (req, res) => {
         res.json(result)
     })
 }
-module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat, singleProduct,cart }
+
+const price = (req, res) => {
+    const query = `SELECT SUM(price) AS sum FROM order_products`
+    connection.query(query, (err, result) => {
+        if (err) { throw err };
+        res.json(result[0].sum)
+    })
+}
+module.exports = { addItem, deleteItem, orderRequest, customerOrders, sendMsg, allCat, singleProduct, cart, price }
 
